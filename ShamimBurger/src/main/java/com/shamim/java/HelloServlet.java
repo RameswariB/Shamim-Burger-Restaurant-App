@@ -32,9 +32,28 @@ public class HelloServlet extends HttpServlet {
 		//doGet(request, response);
 		
 		HamburguerFactory hf = new HamburguerFactory();
-		String yourName = request.getParameter("yourName");
+		BasicHamburguer myHamburguer1 = ((IBasicHamburguerBuilder)hf.CreateHamburguer(HamburguerType.Basic, "White roll", "Sausage", 3.56)).build();
+        BasicHamburguer myHamburguer2 = ((IBasicHamburguerBuilder)hf.CreateHamburguer(HamburguerType.Basic, "White roll", "Sausage", 3.56))
+            .setAdd1(new Addition("Tomato", 0.27))
+            .setAdd2(new Addition("Lettuce", 0.75))
+            .setAdd3(new Addition("Cheese", 1.13))
+            .build();
+//        HealthyHamburguer myHamburguer3 = ((IHealthyHamburguerBuilder)hf.CreateHamburguer(HamburguerType.Healthy, null, "Bacon", 5.67))
+//            .setAdd1(new Addition("Egg", 5.43))
+//            .setAdd2(new Addition("Lentils", 3.41))
+//            .build();
+        DeluxeHamburguer myHamburguer4 = ((IDeluxeHamburguerBuilder)hf.CreateHamburguer(HamburguerType.Delux, "White roll", "Sausage & Bacon", 14.54)).build();
+
+        
+		//String yourName = request.getParameter("yourName");
 		PrintWriter writer = response.getWriter();
-		writer.println("<h1>Hello " + yourName + "</h1>");
+		writer.println("<body style=\"background-image:url('background.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;color:white;\">");
+		writer.println("<br/><br/>");
+		writer.println("<h3>Hello " + myHamburguer1.toString() + "</h1>");
+		writer.println("<h3>Hello " + myHamburguer2.toString() + "</h1>");
+		//writer.println("<h1>Hello " + myHamburguer3.toString() + "</h1>");
+		writer.println("<h3>Hello " + myHamburguer4.toString() + "</h1>");
+		writer.println("</body>");
 		writer.close();
 	}
 

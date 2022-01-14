@@ -16,7 +16,7 @@ public class HamburguerFactory {
              case Basic:
                  return BasicHamburguerBuilder.Init(bread, meat, price);
              case Healthy:
-                 return HealthyHamburguerBuilder.Init(meat, price);
+                 return (IHamburguerBuilder) HealthyHamburguerBuilder.Init(meat, price);
              case Delux:
                  return DeluxeHamburguerBuilder.Init(bread, meat, price);
              default:

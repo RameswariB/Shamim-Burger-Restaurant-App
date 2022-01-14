@@ -88,19 +88,19 @@ public class BasicHamburguer {
     
 	 public double GetTotal()
      {
-         return basePrice + (add1 != null ? add1.Price : 0) + (add2 != null ? add2.Price : 0) + (add3 != null ? add3.Price : 0) + (add4 != null ? add4.Price : 0);
+         return basePrice + (add1 != null ? add1.Price : 0) + (add2 != null ? getAdd2().Price : 0) + (add3 != null ? getAdd3().Price : 0) + (add4 != null ? getAdd4().Price : 0);
      }
 
 	 
      @Override
 	public String toString() {
 
-    	 String message = "Basic hamburger on a {bread} with {meat}, price is {basePrice}\n";
-         message += add1 != null ? "Added {add1.Name} for an extra {add1.Price}\n" : "";
-         message += add2 != null ? "Added {add2.Name} for an extra {add2.Price}\n" : "";
-         message += add3 != null ? "Added {add3.Name} for an extra {add3.Price}\n" : "";
-         message += add4 != null ? "Added {add4.Name} for an extra {add4.Price}\n" : "";
-         message += "Total Burger price is {GetTotal()}\n";
+    	 String message = "Basic hamburger on a "+getBread()+" with "+getMeat()+", price is "+getBasePrice()+"\n";
+         message += add1 != null ? "Added "+getAdd1().Name +" for an extra "+getAdd1().Price+"\n" : "";
+         message += add2 != null ? "Added "+getAdd2().Name +" for an extra "+getAdd2().Price+"\n" : "";
+         message += add3 != null ? "Added "+getAdd3().Name +" for an extra "+getAdd3().Price+"\n" : "";
+         message += add4 != null ? "Added "+getAdd4().Name +" for an extra "+getAdd4().Price+"\n" : "";
+         message += "Total Burger price is "+GetTotal() +"\n";
          return message;
      }
 
